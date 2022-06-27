@@ -29,6 +29,7 @@ guess = "_" * len(word)
 guess_word = set(word)
 print(guess)
 print(word)
+print(len(word))
 
 
 def check_letter_in_word(): 
@@ -58,9 +59,17 @@ def check_letter_in_word():
             if user_choice in word:
                 letters_in_word.add(user_choice)
                 print(f"{letters_in_word} is present in the word")
-                           
+        current_word = ""
+        for letter in letters_in_word:
+            if letters_in_word == guess_word:
+                print('current word = " ", .join(current_word)'  )
+        
+
+
+                      
 
 def main():
     check_letter_in_word()
+    show_letters()
 
 main()
