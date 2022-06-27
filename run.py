@@ -15,7 +15,7 @@ user_name = input("Please insert your name: ")
 
 lives = 6
 
-
+letters_used = set()
 
 class User:
     def __init__(self, name):
@@ -36,9 +36,12 @@ def check_letter_in_word():
     letters_in_word = set()
     
     while guess_word != letters_in_word:  
-        
+       
         user_choice = input("Guess a word: ").upper()
-        letters_used = user_choice.split(',')
+        if user_choice in letters_used:
+            print('letter already used')
+            continue
+        x = letters_used.add(user_choice)
         print(letters_used)
         if word.find(user_choice) == -1:
             print("I guess that you didn't guess 🤣")
@@ -51,16 +54,11 @@ def check_letter_in_word():
             print("i guess you guess ✌")
             print(lives)
             print(letters_used)
+                
             if user_choice in word:
                 letters_in_word.add(user_choice)
                 print(f"{letters_in_word} is present in the word")
-
-    def check_input():
-        if user_choice in letters_in_word:
-            print('letter already used') 
-           
-            
-
+                           
 
 def main():
     check_letter_in_word()
