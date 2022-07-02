@@ -70,7 +70,7 @@ def check_letter_in_word():
         guess = current_word
         print(guess)
 
-def loop(): 
+def restart(): 
     global lives
     word = random.choice(WORDS)
     guess_word = set(word)
@@ -122,7 +122,7 @@ def replay():
     global WORDS
     play = input("Do you want to do another game y/n ??").upper()
     if play == "Y":
-        loop()
+        restart()
     elif play == "N":
         print("Thanks for your time")
     else:
