@@ -36,10 +36,8 @@ def difficult():
 
 def easy_mode():
     word = random.choice(WORDS)
-    if len(word) >= 7:
+    while len(word) >= 7:
         word = random.choice(WORDS)
-    else:
-        pass
     guess = "_" * len(word)
     guess_word = set(word)
     letters_in_word = set()
@@ -90,7 +88,7 @@ def easy_mode():
         guess = current_word
         print(guess)
         if lives == 0:
-            print("Game Over")
+            print("Game Over \n")
             replay()
     replay()           
 
@@ -99,11 +97,11 @@ def easy_mode():
 
 def hard_mode(): 
     word = random.choice(WORDS)
-    if len(word) < 7:
+    while len(word) < 7:
         word = random.choice(WORDS)
     else: 
         pass
-
+    print(word)
     guess_word = set(word)
     letters_in_word = set()
     letters_used = set()
@@ -135,7 +133,7 @@ def hard_mode():
             print(f"{coins} coin/s")
         else:
             lives = lives + 1
-            coins = coins + 5
+            coins = coins + 30
             print("i guess you guess ✌\n")
             print(f"{lives} lives remained\n")
             print(f"You used already {letters_used}\n")
@@ -155,8 +153,15 @@ def hard_mode():
         guess = current_word
         print(guess)
         if lives == 0:
-            print("Game Over")
-            replay()
+            print("Game Over\n")
+            if coins >= 20:
+                go_ahead = input("For 20 coins you can get 3 new lives, do you want to spend your coins and continue ? y/n").upper()
+                if go_ahead == 'Y':
+                    coins = coins - 20
+                    lives = lives + 3
+                    
+            else:
+                replay()
     replay()
     
 
