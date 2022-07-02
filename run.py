@@ -60,16 +60,21 @@ def check_letter_in_word():
                 letters_in_word.add(user_choice)
                 print(f"{letters_in_word} is present in the word")
         current_word = ""
-        for letter in letters_in_word:
-            if letters_in_word == guess_word:
-                print('current word = " ", .join(current_word)'  )
-        
+        for letter in range(len(word)):
+            global guess
+            if user_choice == word[letter]:
+                current_word += user_choice
+            else:
+                current_word += guess[letter]
+
+        guess = current_word
+        print(guess)
+
 
 
                       
 
 def main():
     check_letter_in_word()
-    show_letters()
 
 main()
