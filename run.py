@@ -70,11 +70,70 @@ def check_letter_in_word():
         guess = current_word
         print(guess)
 
+def loop(): 
+    global lives
+    word = random.choice(WORDS)
+    guess_word = set(word)
+    letters_in_word = set()
+    letters_used = set()
+    guess_word = set(word)
+    guess = "_" * len(word)
+    print(guess)
+    print(word)
+  
+    while guess_word != letters_in_word:  
+       
+        user_choice = input("Guess a word: ").upper()
+        if user_choice in letters_used:
+            print('letter already used')
+            continue
+        x = letters_used.add(user_choice)
+        print(letters_used)
+        if word.find(user_choice) == -1:
+            print("I guess that you didn't guess 🤣")
+            lives = lives - 1
+            print(lives)
+            print(letters_used)
+        
+        else:
+            lives = lives + 1
+            print("i guess you guess ✌")
+            print(lives)
+            print(letters_used)
+                
+            if user_choice in word:
+                letters_in_word.add(user_choice)
+                print(f"{letters_in_word} is present in the word")
 
+        current_word = ""
+        
+        for letter in range(len(word)):
+           
+            if user_choice == word[letter] :
+                current_word += user_choice
+            else:
+                current_word += guess[letter]
+
+        guess = current_word
+        print(guess)
+    replay()
+
+def replay():
+    global WORDS
+    play = input("Do you want to do another game y/n ??").upper()
+    if play == "Y":
+        loop()
+    elif play == "N":
+        print("Thanks for your time")
+    else:
+        print("Invalid input")
+        play = input("Do you want to do another game y/n ??").upper()
+        
 
                       
 
 def main():
     check_letter_in_word()
+    replay()
 
 main()
