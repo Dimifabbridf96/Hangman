@@ -51,11 +51,12 @@ def check_letter_in_word():
         x = letters_used.add(user_choice)
         
         if word.find(user_choice) == -1:
-            print("I guess that you didn't guess 🤣")
+            print("I guess that you didn't guess 🤣\n")
             lives = lives - 1
-            print(f"{lives} lives remained")
-            print(f"You used already {letters_used} ")
-            print(f"{coins} coin/s")
+            coins = coins - 5
+            print(f"{lives} lives remained\n")
+            print(f"You used already {letters_used}\n ")
+            print(f"{coins} coin/s\n")
         else:
             lives = lives + 1
             coins = coins + 5
