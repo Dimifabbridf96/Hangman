@@ -14,8 +14,8 @@ print('Welcome to the game :\n' ,
 user_name = input("Please insert your name: ")
 
 lives = 6
+coins = 0
 
-letters_used = set()
 
 class User:
     def __init__(self, name):
@@ -27,14 +27,14 @@ user = User(user_name)
 word = random.choice(WORDS)
 guess = "_" * len(word)
 guess_word = set(word)
-print(guess)
-print(word)
-print(len(word))
+letters_in_word = set()
+letters_used = set()
+print(f"{guess} \n")
 
 
 def check_letter_in_word(): 
     global lives
-    letters_in_word = set()
+    global coins
     
     while guess_word != letters_in_word:  
        
@@ -54,16 +54,19 @@ def check_letter_in_word():
             lives = lives - 1
             print(lives)
             print(letters_used)
+            print(coins)
         
         else:
             lives = lives + 1
+            coins = coins + 5
             print("i guess you guess ✌")
             print(lives)
             print(letters_used)
+            print(coins)
                 
             if user_choice in word:
                 letters_in_word.add(user_choice)
-                print(f"{letters_in_word} is present in the word")
+                print(f"{letters_in_word} are present in the word")
         current_word = ""
         for letter in range(len(word)):
             global guess
@@ -83,8 +86,7 @@ def restart():
     letters_used = set()
     guess_word = set(word)
     guess = "_" * len(word)
-    print(guess)
-    print(word)
+    print(f"{guess} \n")
   
     while guess_word != letters_in_word:  
        
@@ -113,7 +115,7 @@ def restart():
                 
             if user_choice in word:
                 letters_in_word.add(user_choice)
-                print(f"{letters_in_word} is present in the word")
+                print(f"{letters_in_word} are present in the word")
 
         current_word = ""
         
