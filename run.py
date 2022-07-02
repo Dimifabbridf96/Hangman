@@ -39,6 +39,11 @@ def check_letter_in_word():
     while guess_word != letters_in_word:  
        
         user_choice = input("Guess a word: ").upper()
+        if len(user_choice) > 1:
+            print("Invalid input try again")
+            user_choice = input("Guess a word: ").upper()
+        else:
+            pass
         if user_choice in letters_used:
             print('letter already used')
             continue
@@ -84,6 +89,11 @@ def restart():
     while guess_word != letters_in_word:  
        
         user_choice = input("Guess a word: ").upper()
+        if len(user_choice) > 1:
+            print("Invalid input try again")
+            user_choice = input("Guess a word: ").upper()
+        else:
+            pass
         if user_choice in letters_used:
             print('letter already used')
             continue
