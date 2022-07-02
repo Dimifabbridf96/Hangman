@@ -15,8 +15,6 @@ user_name = input("Please insert your name: ")
 
 
 
-lives = 6
-coins = 0
 
 
 class User:
@@ -25,25 +23,30 @@ class User:
       
         print( f"Ready to guess {self.name} ? ")     
 user = User(user_name)
+
 def difficult():
     difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
     if difficulty == 'E':
-        pass 
+        easy_mode() 
     elif difficulty == "D":
         hard_mode()
     else: 
         print("Invalid input try again: e for easy, d for difficult")
     
 
-def check_letter_in_word():
+def easy_mode():
     word = random.choice(WORDS)
+    if len(word) >= 7:
+        word = random.choice(WORDS)
+    else:
+        pass
     guess = "_" * len(word)
     guess_word = set(word)
     letters_in_word = set()
     letters_used = set()
     print(f"{guess} \n")
-    global lives
-    global coins
+    lives = 6
+    coins = 0
     
     while guess_word != letters_in_word:  
        
@@ -86,12 +89,21 @@ def check_letter_in_word():
 
         guess = current_word
         print(guess)
-    replay()
+        if lives == 0:
+            print("Game Over")
+            replay()
+    replay()           
+
+    
 
 
 def hard_mode(): 
-    
     word = random.choice(WORDS)
+    if len(word) < 7:
+        word = random.choice(WORDS)
+    else: 
+        pass
+
     guess_word = set(word)
     letters_in_word = set()
     letters_used = set()
@@ -99,8 +111,8 @@ def hard_mode():
     guess = "_" * len(word)
     print(f"{guess} \n")
   
-    global lives
-    global coins
+    lives = 6
+    coins = 0
     
     while guess_word != letters_in_word:  
        
@@ -142,14 +154,16 @@ def hard_mode():
 
         guess = current_word
         print(guess)
+        if lives == 0:
+            print("Game Over")
+            replay()
     replay()
     
 
 def replay():
-    global WORDS
     play = input("Do you want to do another game y/n ??").upper()
     if play == "Y":
-        check_letter_in_word()
+       difficult()
     elif play == "N":
         print("Thanks for your time")
     else:
@@ -162,6 +176,6 @@ def replay():
 def main():
     difficult()
     hard_mode()
-    check_letter_in_word()
+    easy_mode()
     replay()
 main()
