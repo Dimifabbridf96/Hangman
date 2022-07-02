@@ -13,6 +13,8 @@ print('Welcome to the game :\n' ,
 
 user_name = input("Please insert your name: ")
 
+
+
 lives = 6
 coins = 0
 
@@ -23,9 +25,15 @@ class User:
       
         print( f"Ready to guess {self.name} ? ")     
 user = User(user_name)
-
-
-
+def difficult():
+    difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
+    if difficulty == 'E':
+        pass 
+    elif difficulty == "D":
+        hard_mode()
+    else: 
+        print("Invalid input try again: e for easy, d for difficult")
+    
 
 def check_letter_in_word():
     word = random.choice(WORDS)
@@ -80,7 +88,8 @@ def check_letter_in_word():
         print(guess)
     replay()
 
-"""def restart(): 
+
+def hard_mode(): 
     
     word = random.choice(WORDS)
     guess_word = set(word)
@@ -125,7 +134,7 @@ def check_letter_in_word():
                 print(f"{letters_in_word} are present in the word")
         current_word = ""
         for letter in range(len(word)):
-            global guess
+           
             if user_choice == word[letter]:
                 current_word += user_choice
             else:
@@ -133,9 +142,9 @@ def check_letter_in_word():
 
         guess = current_word
         print(guess)
-
+    replay()
     
-"""
+
 def replay():
     global WORDS
     play = input("Do you want to do another game y/n ??").upper()
@@ -151,7 +160,8 @@ def replay():
                       
 
 def main():
+    difficult()
+    hard_mode()
     check_letter_in_word()
     replay()
-
 main()
