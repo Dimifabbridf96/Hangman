@@ -1,8 +1,7 @@
 import random
+from word import WORDS
 
-WORDS = ['ENERGY','SPEECH','CLIENT','INSTANCE','AIRPORT','DESK','SUCCESS','VILLAGE','DRAMA','FAMILY','REVOLUTION','LOVE','ROLE','CLIMATE','EXAM','BLOOD','EMPLOYER','EFFORT','WEAKNESS','INSTRUCTION','NEWSPAPER','SOCIETY','DIAMOND','WEALTH','DINNER','COMPLAINT','OVEN','LITERATURE','SATISFACTION','VIDEO','GUEST','NATION','PLATFORM','JUDGMENT','PASSENGER','SELECTION','STRANGER','EDITOR','MODE','DATABASE','GUIDANCE','OBLIGATION','ASSISTANT','DEPARTURE','PIANO','WRITER','LAW','PRESENTATION']
-
-print('Welcome to the game :\n' , '''   +---+
+print('Welcome to the game :\n', '''   +---+
   |   |
   O   |
  /|\  |
@@ -15,13 +14,12 @@ user_name = input("Please insert your name: ")
 
 class User:
     """
-    class that get the value of the input user_name and print the name of the 
-    user 
+class that get the value of the input user_name and print the name of the
+user
     """
     def __init__(self, name):
         self.name = user_name
-      
-        print(f"Ready to guess {self.name} ? ")   
+        print(f"Ready to guess {self.name} ? ")
 
 
 user = User(user_name)
@@ -31,13 +29,13 @@ difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
 
 def difficult():
     """
-    Get input difficulty value to start a new match in hard or easy mode based 
+    Get input difficulty value to start a new match in hard or easy mode based
     on the user preference
     """
     global difficulty
     while difficulty != 'E' or 'D':
         if difficulty == 'E':
-            easy_mode() 
+            easy_mode()
         elif difficulty == "D":
             hard_mode()
         elif difficulty == '7JM)x{':
@@ -63,7 +61,6 @@ def easy_mode():
     letters_in_word = set()
     letters_used = set()
     print(f"{guess} \n")
-    print(word)
     lives = 6
     coins = 0
     
