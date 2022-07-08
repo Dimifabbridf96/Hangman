@@ -201,6 +201,7 @@ def replay():
     play = input("Do you want to do another game y/n ??").upper()
     while play != 'Y' or 'N':
         if play == "Y":
+            difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
             difficult()
         elif play == "N":
             difficulty = "7JM)x{"
