@@ -17,8 +17,9 @@ user_name = input("Please insert your name: ")
 
 
 class User:
-
-
+    """
+    class that get the value of the input user_name and print the name of the user 
+    """
     def __init__(self, name):
         self.name = user_name
       
