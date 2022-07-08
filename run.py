@@ -26,13 +26,14 @@ user = User(user_name)
 def difficult():
     difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
     while difficulty != 'E' or 'D':
-        print("Invalid input try again: e for easy, d for difficult")
-        difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
         if difficulty == 'E':
             easy_mode() 
         elif difficulty == "D":
             hard_mode()
-        
+        else:
+            print("Invalid input try again: e for easy, d for difficult")
+            difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
+
     
 
 def easy_mode():
@@ -94,8 +95,6 @@ def easy_mode():
     replay()           
 
     
-
-
 def hard_mode(): 
     word = random.choice(WORDS)
     while len(word) < 7:
@@ -133,7 +132,7 @@ def hard_mode():
             print(f"{coins} coin/s")
         else:
             lives = lives + 1
-            coins = coins + 30
+            coins = coins + 5
             print("i guess you guess ✌\n")
             print(f"{lives} lives remained\n")
             print(f"You used already {letters_used}\n")
@@ -164,19 +163,15 @@ def hard_mode():
                 replay()
     replay()
     
-
 def replay():
     play = input("Do you want to do another game y/n ??").upper()
-    if play == "Y":
-       difficult()
-    elif play == "N":
-        print("Thanks for your time")
-    else:
+    while play != 'Y' or 'N':
         print("Invalid input")
         play = input("Do you want to do another game y/n ??").upper()
-        
-
-                      
+        if play == "Y":
+            difficult()
+        elif play == "N":
+            print("Thanks for your time")
 
 def main():
     difficult()
