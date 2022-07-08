@@ -2,14 +2,13 @@ import random
 
 WORDS = ['ENERGY','SPEECH','CLIENT','INSTANCE','AIRPORT','DESK','SUCCESS','VILLAGE','DRAMA','FAMILY','REVOLUTION','LOVE','ROLE','CLIMATE','EXAM','BLOOD','EMPLOYER','EFFORT','WEAKNESS','INSTRUCTION','NEWSPAPER','SOCIETY','DIAMOND','WEALTH','DINNER','COMPLAINT','OVEN','LITERATURE','SATISFACTION','VIDEO','GUEST','NATION','PLATFORM','JUDGMENT','PASSENGER','SELECTION','STRANGER','EDITOR','MODE','DATABASE','GUIDANCE','OBLIGATION','ASSISTANT','DEPARTURE','PIANO','WRITER','LAW','PRESENTATION']
 
-print('Welcome to the game :\n' , 
-'''                   +---+
-                    |   |
-                        |
-                        |
-                        |
-                        |
-                    =========''')
+print('Welcome to the game :\n' , '''   +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''')
 
 user_name = input("Please insert your name: ")
 
@@ -26,12 +25,14 @@ user = User(user_name)
 
 def difficult():
     difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
-    if difficulty == 'E':
-        easy_mode() 
-    elif difficulty == "D":
-        hard_mode()
-    else: 
+    while difficulty != 'E' or 'D':
         print("Invalid input try again: e for easy, d for difficult")
+        difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
+        if difficulty == 'E':
+            easy_mode() 
+        elif difficulty == "D":
+            hard_mode()
+        
     
 
 def easy_mode():
@@ -101,7 +102,6 @@ def hard_mode():
         word = random.choice(WORDS)
     else: 
         pass
-    print(word)
     guess_word = set(word)
     letters_in_word = set()
     letters_used = set()
