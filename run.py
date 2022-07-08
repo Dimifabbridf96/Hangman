@@ -13,9 +13,6 @@ print('Welcome to the game :\n' , '''   +---+
 user_name = input("Please insert your name: ")
 
 
-
-
-
 class User:
     """
     class that get the value of the input user_name and print the name of the user 
@@ -23,10 +20,13 @@ class User:
     def __init__(self, name):
         self.name = user_name
       
-        print( f"Ready to guess {self.name} ? ")     
+        print( f"Ready to guess {self.name} ? ")   
+
+
 user = User(user_name)
 
 difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
+
 
 def difficult():
     global difficulty
@@ -42,7 +42,6 @@ def difficult():
             difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
         
     
-
 def easy_mode():
     word = random.choice(WORDS)
     while len(word) >= 7:
@@ -67,7 +66,7 @@ def easy_mode():
         if user_choice in letters_used:
             print('letter already used')
             continue
-        x = letters_used.add(user_choice)
+            letters_used.add(user_choice)
         
         if word.find(user_choice) == -1:
             print("I guess that you didn't guess 🤣\n")
@@ -171,6 +170,7 @@ def hard_mode():
                 replay()
     replay()
     
+
 def replay():
     global difficulty
     play = input("Do you want to do another game y/n ??").upper()
@@ -189,4 +189,6 @@ def replay():
 
 def main():
     difficult()    
+
+
 main()
