@@ -15,12 +15,13 @@ user_name = input("Please insert your name: ")
 
 class User:
     """
-    class that get the value of the input user_name and print the name of the user 
+    class that get the value of the input user_name and print the name of the 
+    user 
     """
     def __init__(self, name):
         self.name = user_name
       
-        print( f"Ready to guess {self.name} ? ")   
+        print(f"Ready to guess {self.name} ? ")   
 
 
 user = User(user_name)
@@ -29,6 +30,10 @@ difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
 
 
 def difficult():
+    """
+    Get input difficulty value to start a new match in hard or easy mode based 
+    on the user preference
+    """
     global difficulty
     while difficulty != 'E' or 'D':
         if difficulty == 'E':
@@ -39,10 +44,17 @@ def difficult():
             break
         else:
             print("Invalid input try again: e for easy, d for difficult")
-            difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
+            difficulty = input(
+                "Do you want to play easy or difficult ? e/d : ").upper()
         
     
 def easy_mode():
+    """
+    game mode where the word choose can be only under 7 letters, add 1 life 
+    and 5 coins everytime the user guess a letter of the word choose,
+    the user if lose all the lives can restart spending the coins
+    obtained at the end of the match the function run replay function  
+    """
     word = random.choice(WORDS)
     while len(word) >= 7:
         word = random.choice(WORDS)
@@ -98,11 +110,21 @@ def easy_mode():
         print(guess)
         if lives == 0:
             print("Game Over \n")
+            if coins >= 10:
+                go_ahead = input("For 10 coins you can get 5 new lives, do you want to spend your coins and continue ? y/n").upper()
+                if go_ahead == 'Y':
+                    coins = coins - 10
+                    lives = lives + 5
             replay()
     replay()           
 
     
 def hard_mode(): 
+    """
+    game mode where the word choose can be only over 7 letters, add 5 coins everytime the user guess a letter of the word choose,
+    the user if lose all the lives can restart spending the coins
+    obtained, at the end of the match the function run replay function
+    """
     word = random.choice(WORDS)
     while len(word) < 7:
         word = random.choice(WORDS)
@@ -129,7 +151,7 @@ def hard_mode():
         if user_choice in letters_used:
             print('letter already used')
             continue
-        x = letters_used.add(user_choice)
+            letters_used.add(user_choice)
         
         if word.find(user_choice) == -1:
             print("I guess that you didn't guess 🤣")
@@ -138,7 +160,6 @@ def hard_mode():
             print(f"You used already {letters_used} ")
             print(f"{coins} coin/s")
         else:
-            lives = lives + 1
             coins = coins + 5
             print("i guess you guess ✌\n")
             print(f"{lives} lives remained\n")
@@ -172,6 +193,10 @@ def hard_mode():
     
 
 def replay():
+    """
+    Get the play input value to give to the user the chance to choose if want
+    play another game or close the match
+    """
     global difficulty
     play = input("Do you want to do another game y/n ??").upper()
     while play != 'Y' or 'N':
@@ -188,6 +213,10 @@ def replay():
 
 
 def main():
+    """
+    run difficult function
+    """
+
     difficult()    
 
 
