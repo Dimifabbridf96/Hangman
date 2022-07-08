@@ -17,23 +17,29 @@ user_name = input("Please insert your name: ")
 
 
 class User:
+
+
     def __init__(self, name):
         self.name = user_name
       
         print( f"Ready to guess {self.name} ? ")     
 user = User(user_name)
 
+difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
+
 def difficult():
-    difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
+    global difficulty
     while difficulty != 'E' or 'D':
         if difficulty == 'E':
             easy_mode() 
         elif difficulty == "D":
             hard_mode()
+        elif difficulty == '7JM)x{':
+            break
         else:
             print("Invalid input try again: e for easy, d for difficult")
             difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
-
+        
     
 
 def easy_mode():
@@ -45,6 +51,7 @@ def easy_mode():
     letters_in_word = set()
     letters_used = set()
     print(f"{guess} \n")
+    print(word)
     lives = 6
     coins = 0
     
@@ -164,18 +171,21 @@ def hard_mode():
     replay()
     
 def replay():
+    global difficulty
     play = input("Do you want to do another game y/n ??").upper()
     while play != 'Y' or 'N':
-        print("Invalid input")
-        play = input("Do you want to do another game y/n ??").upper()
         if play == "Y":
             difficult()
         elif play == "N":
-            print("Thanks for your time")
+            difficulty = "7JM)x{"
+            break
+        else:
+            print("Invalid input")
+            play = input("Do you want to do another game y/n ??\n").upper()
+    print("Thanks for your time\n")
+    print('Game Over')
+
 
 def main():
-    difficult()
-    hard_mode()
-    easy_mode()
-    replay()
+    difficult()    
 main()
