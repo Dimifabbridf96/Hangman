@@ -134,21 +134,19 @@ def replay(self):
     Get the play input value to give to the user the chance to choose if want
     play another game or close the match
     """
-    global difficulty
-    play = input("Do you want to do another game y/n ??").upper()
-    while play != 'Y' or 'N':
+    play = input("Do you want to do another game y/n ??: ").upper()
+    while play != 'Y' or play != 'N':
         if play == "Y":
-            difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
-            difficult()
+            self.value = input("Do you want to play easy or difficult ? e/d : ").upper()
+            Game(self.value)
         elif play == "N":
-            difficulty = "7JM)x{"
-            break
+            print("Thanks for your time")
+            print('Game Over')
+            exit()
         else:
             print("Invalid input")
-            play = input("Do you want to do another game y/n ??\n").upper()
-    print("Thanks for your time\n")
-    print('Game Over')
-
+            play = input("Do you want to do another game y/n ??: ").upper()
+    
 
 def main():
     """
