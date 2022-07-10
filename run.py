@@ -9,25 +9,29 @@ print('Welcome to the game :\n', '''   +---+
       |
 =========''')
 
-user_name = input("Please insert your name: ")
 
-
-class User:
+class Game: 
     """
-class that get the value of the input user_name and print the name of the
-user
+       Get difficult input to determine the difficult 
+       choose from the user and start the game
     """
-    def __init__(self, name):
-        self.name = user_name
-        print(f"Ready to guess {self.name} ? ")
+    def __init__(self, value):
+        """
+        Manage the difficult input and run game_mode function to start the game
+        """
+       
+        self.value = value
+
+        while self.value != 'E' or self.value != 'D':
+            if self.value == 'E' or self.value == 'D':
+                game_mode(self)
+            else:
+                print("Invalid input try again: e for easy, d for difficult")
+                self.value = input(
+                    "Do you want to play easy or difficult ? e/d : ").upper()
 
 
-user = User(user_name)
-
-difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
-
-
-def difficult():
+def game_mode(self):
     """
     Get input difficulty value to start a new match in hard or easy mode based
     on the user preference
@@ -212,10 +216,30 @@ def replay():
 
 def main():
     """
-    run difficult function
+    run input pre-game and Game class
     """
 
-    difficult()    
+
+user_name = input("Please insert your name: ")
+while len(user_name) < 1:
+    print('Please insert at least one letter')
+    user_name = input("Please insert your name: ")
 
 
+class User:
+    """
+class that get the value of the input user_name and print the name of the
+user
+    """
+    
+    def __init__(self, name):
+        self.name = user_name
+        print(f"Ready to guess {self.name} ? ")
+
+
+user = User(user_name)
+
+difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
+
+Game(difficulty)
 main()
