@@ -52,17 +52,17 @@ def game_mode(self):
     coins = 0
     
     while guess_word != letters_in_word:  
-       
-        user_choice = input("Guess a word:").upper()
-        if len(user_choice) > 1:
+    
+        user_choice = input("Guess a letter of the word: ").upper()
+        if len(user_choice) > 1 or len(user_choice) <1:
             print("Invalid input try again")
-            user_choice = input("Guess a word: ").upper()
-        else:
-            pass
+            user_choice = input("Guess a letter of the word: ").upper()
+
         if user_choice in letters_used:
             print('letter already used')
             continue
-            letters_used.add(user_choice)
+
+        letters_used.add(user_choice)
         
         if word.find(user_choice) == -1:
             print("I guess that you didn't guess 🤣\n")
@@ -72,8 +72,11 @@ def game_mode(self):
             print(f"You used already {letters_used}\n ")
             print(f"{coins} coin/s\n")
         else:
-            lives = lives + 1
-            coins = coins + 5
+            if self.value == 'E':
+                lives = lives + 1
+            elif self.value == 'D':
+                lives = lives
+            coins = coins + 10000
             print("i guess you guess ✌\n")
             print(f"{lives} lives remained\n")
             print(f"You used already {letters_used}\n")
@@ -82,9 +85,9 @@ def game_mode(self):
             if user_choice in word:
                 letters_in_word.add(user_choice)
                 print(f"{letters_in_word} are present in the word")
+
         current_word = ""
         for letter in range(len(word)):
-           
             if user_choice == word[letter]:
                 current_word += user_choice
             else:
