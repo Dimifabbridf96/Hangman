@@ -1,31 +1,39 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Hangman 
+Hangman is a Python version of the homonymous traditional game with the opportunity of 2 different levels, coins inside the game that are used in exchange for new lives when the standard ones are finished.
+In this game, the user can challenge himself to guess a random word chosen from the program.
 
-Welcome Dimifabbridf96,
+If you want to try the game here is the link - https://hangman-eng.herokuapp.com/
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+## How to play:
 
-## Reminders
+The user is welcomed with a message then:
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+* To start the user need to enter his name
+* The second choice that the user needs to do is the difficulty which can be easy(e) or difficult(d)
+* At this point the program chooses a word that can be <7 if the user chooses easy mode or >7 if the hard mode
+* From here the user chooses a letter every round to see if is part of the hidden word.
+* If the letter is inside the word on the terminal is shown the current word with the letter guessed in the respective position
+* Every round the lives increase (onòy easy mode) or decrease based on the presence or not of the letter in the word
+* Same thing for the coins
+* If the number of lives reaches 0 there are 2 possible consequences:
+    1. If the user has enough coins (10 for easy mode and 20 for hard mode) can spend them to receive 5 (e) or 3 (d)
+    2. Else if the user doesn't have enough coins the game finish and the user can restart the game
+* Finally if the user wants to close the program can answer 'N' on the input at the end of the match.
 
-## Creating the Heroku app
+# Features
+## Existing features
+* Personalized challenge message
+    1. After the user insert the name printed on the terminal a message containing the user name
+* Opportunity to choose the difficulty with which play
+    1. The user can challenge himself if the standard easy mode is too simple.
+    2. With the hard mode the user can find a more complex game without sacrifice the fun.
+* Random choice of a word to guess
+    1. The program choose a word beetween 50 different word creating the word to be guess with an underscore for every letter.
+* Visual demostration of letter guessed
+    1. Every letter guessed is replace the underscore in the word shown
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+ 
 
-1. `heroku/python`
-2. `heroku/nodejs`
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
 
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!

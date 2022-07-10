@@ -54,8 +54,7 @@ def game_mode(self):
     while guess_word != letters_in_word:  
     
         user_choice = input("Guess a letter of the word: ").upper()
-        if len(user_choice) > 1 or len(user_choice) <1:
-            print("Invalid input try again")
+        if len(user_choice) > 1 or len(user_choice) < 1:
             user_choice = input("Guess a letter of the word: ").upper()
 
         if user_choice in letters_used:
