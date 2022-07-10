@@ -76,7 +76,7 @@ def game_mode(self):
                 lives = lives + 1
             elif self.value == 'D':
                 lives = lives
-            coins = coins + 10000
+            coins = coins + 10
             print("i guess you guess ✌\n")
             print(f"{lives} lives remained\n")
             print(f"You used already {letters_used}\n")
@@ -97,89 +97,39 @@ def game_mode(self):
         print(guess)
         if lives == 0:
             print("Game Over \n")
-            if coins >= 10:
-                go_ahead = input("For 10 coins you can get 5 new lives, do you want to spend your coins and continue ? y/n").upper()
-                if go_ahead == 'Y':
-                    coins = coins - 10
-                    lives = lives + 5
-            replay()
-    replay()           
+            if self.value == 'E':
+                if coins >= 10:
+                    go_ahead = input("For 10 coins you can get 5 new lives, do you want to spend your coins and continue ? y/n ").upper()
+                    while go_ahead != "Y" or go_ahead != 'N':
+                        if go_ahead == 'Y':
+                            coins = coins - 10
+                            lives = lives + 5
+                            continue
+                        elif go_ahead == 'N':
+                            replay(self)
+                        else:
+                            print('Please try again')
+                            go_ahead = input("For 10 coins you can get 5 new lives, do you want to spend your coins and continue ? y/n ").upper()
+
+            if self.value == 'D':
+                if coins >= 20:
+                    go_ahead = input("For 20 coins you can get 3 new lives, do you want to spend your coins and continue ? y/n ").upper()
+                    while go_ahead != "Y" or go_ahead != 'N':
+                        if go_ahead == 'Y':
+                            coins = coins - 20
+                            lives = lives + 3
+                            continue
+                        elif go_ahead == 'N':
+                            replay(self)
+                        else: 
+                            print('Please try again')
+                            go_ahead = input("For 10 coins you can get 5 new lives, do you want to spend your coins and continue ? y/n ").upper()
+
+            replay(self)
+    replay(self)           
 
     
-def hard_mode(): 
-    """
-    game mode where the word choose can be only over 7 letters, add 5 coins everytime the user guess a letter of the word choose,
-    the user if lose all the lives can restart spending the coins
-    obtained, at the end of the match the function run replay function
-    """
-    word = random.choice(WORDS)
-    while len(word) < 7:
-        word = random.choice(WORDS)
-    else: 
-        pass
-    guess_word = set(word)
-    letters_in_word = set()
-    letters_used = set()
-    guess_word = set(word)
-    guess = "_" * len(word)
-    print(f"{guess} \n")
-  
-    lives = 6
-    coins = 0
-    
-    while guess_word != letters_in_word:  
-       
-        user_choice = input("Guess a word:").upper()
-        if len(user_choice) > 1:
-            print("Invalid input try again")
-            user_choice = input("Guess a word: ").upper()
-        else:
-            pass
-        if user_choice in letters_used:
-            print('letter already used')
-            continue
-            letters_used.add(user_choice)
-        
-        if word.find(user_choice) == -1:
-            print("I guess that you didn't guess 🤣")
-            lives = lives - 1
-            print(f"{lives} lives remained")
-            print(f"You used already {letters_used} ")
-            print(f"{coins} coin/s")
-        else:
-            coins = coins + 5
-            print("i guess you guess ✌\n")
-            print(f"{lives} lives remained\n")
-            print(f"You used already {letters_used}\n")
-            print(f"{coins} coin/s\n")
-                
-            if user_choice in word:
-                letters_in_word.add(user_choice)
-                print(f"{letters_in_word} are present in the word")
-        current_word = ""
-        for letter in range(len(word)):
-           
-            if user_choice == word[letter]:
-                current_word += user_choice
-            else:
-                current_word += guess[letter]
-
-        guess = current_word
-        print(guess)
-        if lives == 0:
-            print("Game Over\n")
-            if coins >= 20:
-                go_ahead = input("For 20 coins you can get 3 new lives, do you want to spend your coins and continue ? y/n").upper()
-                if go_ahead == 'Y':
-                    coins = coins - 20
-                    lives = lives + 3
-                    
-            else:
-                replay()
-    replay()
-    
-
-def replay():
+def replay(self):
     """
     Get the play input value to give to the user the chance to choose if want
     play another game or close the match
