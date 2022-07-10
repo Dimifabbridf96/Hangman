@@ -36,30 +36,13 @@ def game_mode(self):
     Get input difficulty value to start a new match in hard or easy mode based
     on the user preference
     """
-    global difficulty
-    while difficulty != 'E' or 'D':
-        if difficulty == 'E':
-            easy_mode()
-        elif difficulty == "D":
-            hard_mode()
-        elif difficulty == '7JM)x{':
-            break
-        else:
-            print("Invalid input try again: e for easy, d for difficult")
-            difficulty = input(
-                "Do you want to play easy or difficult ? e/d : ").upper()
-        
-    
-def easy_mode():
-    """
-    game mode where the word choose can be only under 7 letters, add 1 life 
-    and 5 coins everytime the user guess a letter of the word choose,
-    the user if lose all the lives can restart spending the coins
-    obtained at the end of the match the function run replay function  
-    """
     word = random.choice(WORDS)
-    while len(word) >= 7:
-        word = random.choice(WORDS)
+    if self.value == 'E':
+        while len(word) >= 7:
+            word = random.choice(WORDS)
+    elif self.value == 'D':
+        while len(word) < 7:
+            word = random.choice(WORDS)
     guess = "_" * len(word)
     guess_word = set(word)
     letters_in_word = set()
