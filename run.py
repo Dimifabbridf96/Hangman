@@ -179,4 +179,3 @@ difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
 
 Game(difficulty)
 main()
-
