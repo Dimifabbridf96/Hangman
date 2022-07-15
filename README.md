@@ -30,7 +30,7 @@ The user is welcomed with a message then:
 * Random choice of a word to guess
     1. The program chooses a word between 50 different words creating the word to be guessed with an underscore for every letter.
 
-    <img src = 'images/username_and_difficulty.png' alt = 'screenshot of the interface that show the name of the user, the difficulty choice and the hide word to guess '>
+    <img src = 'images/username_and_difficulty.png' alt = 'screenshot of the interface that shows the name of the user, the difficulty choice, and the hidden word to guess '>
 
 * Visual demonstration of letter guessed
     1. Every letter guessed replaces the underscore in the word shown
@@ -40,7 +40,7 @@ The user is welcomed with a message then:
 * Presence of a coins reward
     1. Whenever the user guesses a letter the program rewards him with 10 coins that at the end of the game if the user loses all the lives can spend to buy new lives to go ahead and finally guess the current word.
 
-<img src = 'images/letter_guessed_and_not.png' alt = 'screenshot of the interface that show the different messages if the letter is in the word or not '>
+<img src = 'images/letter_guessed_and_not.png' alt = 'screenshot of the interface that shows the different messages if the letter is in the word or not '>
 
 * Replay and proceed opportunity
     1. As cited before when the word is complete or the lives counter reaches 0 the user has the chance to restart the game with a new random word, the same word spending the virtual coins gained during the current match or exit from the game and shut the program.
@@ -56,7 +56,7 @@ The user is welcomed with a message then:
 
 I have manually tested my code:
 * Passed the code through PEP8 not experiencing any main problems
-* Given invalid input messages: different letters than e or d when asked to choose a difficulty, different letters than y or n when asked to continue the game or spend the coins, numbers instead of strings when asked for the name or the letter present in the  word, blank input in the user_choice or user_name.
+* Given invalid input messages: different letters than e or d when asked to choose a difficulty, different letters than y or n when asked to continue the game or spend the coins, numbers instead of strings when asked for the name or the letter present in the word, blank input in the user_choice or user_name.
 * Tested in my local terminal and in the Code Institute Heroku terminal
 
 # Bugs
@@ -66,11 +66,11 @@ I have manually tested my code:
 * Found a bug in the username and user choice input that accepts numbers too, fixed with the string method isalpha() that returns False if inside the input is present numbers, added so a while loop that passes the input to check the presence of numbers and if so print on the terminal an invalid input message.
 
 ## Remaining bugs
-* For the moment any other bugs are discored
+* For the moment any other bugs are discovered
 
 ## Validator Testing
 
-* Passed the code through PEP8 and no main error detected.
+* Passed the code through PEP8 and no main error was detected.
 
 # Deployment
 
@@ -81,14 +81,14 @@ This project was deployed using Code Institute's mock terminal for Heroku.
     2. Create a New Heroku app
     3. Connect your GitHub account to your Heroku account
     4. Select the repository 
-    5. Set the buildbacks to Python and NodeJS in that order
+    5. Set the build back to Python and NodeJS in that order
     6. Click on Deploy.
 
 # Credits
 
-* Code Institute for the deploymnent terminal
+* Code Institute for the deployment terminal
 * code golf for the hangman ASCII art.
-* My mentor Jack Wachira for his precious advise and the essential preliminary chat for every project I develop since the start of his mentoring.
+* My mentor Jack Wachira for his precious advice and the essential preliminary chat for every project I develop since the start of his mentoring.
 
  
 
