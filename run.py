@@ -48,18 +48,19 @@ def game_mode(self):
     letters_in_word = set()
     letters_used = set()
     print(f"{guess} \n")
+    print(word)
     lives = 6
     coins = 0
     
     while guess_word != letters_in_word:  
     
         user_choice = input("Guess a letter of the word: ").upper()
-        while len(user_choice) > 1 or len(user_choice) < 1:
+        while len(user_choice) > 1 or len(user_choice) < 1 or user_choice.isalpha() is False:
             print('Invalid input, try again, only 1 letter at time')
             user_choice = input("Guess a letter of the word: ").upper()
 
         if user_choice in letters_used:
-            print('letter already used')
+            print('Letter already used')
             continue
 
         letters_used.add(user_choice)
@@ -96,21 +97,21 @@ def game_mode(self):
         guess = current_word
         print(guess)
         if lives == 0:
-            print("Game Over \n")
             if self.value == 'E':
-                if coins >= 10:
+                if coins >= 0:
                     go_ahead = input("For 10 coins you can get 5 new lives, do you want to spend your coins and continue ? y/n ").upper()
                     while go_ahead != "Y" or go_ahead != 'N':
                         if go_ahead == 'Y':
                             coins = coins - 10
                             lives = lives + 5
-                            continue
+                            break
                         elif go_ahead == 'N':
                             replay(self)
                         else:
                             print('Please try again, Y for yes and N for no')
                             go_ahead = input("For 10 coins you can get 5 new lives, do you want to spend your coins and continue ? y/n ").upper()
-
+                        replay(self)
+                
             if self.value == 'D':
                 if coins >= 20:
                     go_ahead = input("For 20 coins you can get 3 new lives, do you want to spend your coins and continue ? y/n ").upper()
@@ -118,17 +119,17 @@ def game_mode(self):
                         if go_ahead == 'Y':
                             coins = coins - 20
                             lives = lives + 3
-                            continue
+                            break
                         elif go_ahead == 'N':
                             replay(self)
                         else: 
                             print('Please try again, Y for yes and N for no')
-                            go_ahead = input("For 10 coins you can get 5 new lives, do you want to spend your coins and continue ? y/n ").upper()
-
-            replay(self)
+                            go_ahead = input("For 20 coins you can get 3 new lives, do you want to spend your coins and continue ? y/n ").upper()            
+                        replay(self) 
+    print("Game Over \n")         
     replay(self)           
 
-    
+
 def replay(self):
     """
     Get the play input value to give to the user the chance to choose if want
@@ -155,10 +156,11 @@ def main():
 
 
 user_name = input("Please insert your name: ")
-while len(user_name) < 1:
+while len(user_name) < 1 or user_name.isalpha() is False:
+    print('Please insert only letters')
     print('Please insert at least one letter')
     user_name = input("Please insert your name: ")
-
+    
 
 class User:
     """
@@ -177,3 +179,4 @@ difficulty = input("Do you want to play easy or difficult ? e/d : ").upper()
 
 Game(difficulty)
 main()
+
