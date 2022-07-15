@@ -1,7 +1,7 @@
 import random
 from word import WORDS
 
-print('Welcome to the game :\n', '''   +---+
+print('Welcome to the modern Hangman game :\n', '''   +---+
   |   |
   O   |
  /|\  |
@@ -54,7 +54,8 @@ def game_mode(self):
     while guess_word != letters_in_word:  
     
         user_choice = input("Guess a letter of the word: ").upper()
-        if len(user_choice) > 1 or len(user_choice) < 1:
+        while len(user_choice) > 1 or len(user_choice) < 1:
+            print('Invalid input, try again, only 1 letter at time')
             user_choice = input("Guess a letter of the word: ").upper()
 
         if user_choice in letters_used:
@@ -107,7 +108,7 @@ def game_mode(self):
                         elif go_ahead == 'N':
                             replay(self)
                         else:
-                            print('Please try again')
+                            print('Please try again, Y for yes and N for no')
                             go_ahead = input("For 10 coins you can get 5 new lives, do you want to spend your coins and continue ? y/n ").upper()
 
             if self.value == 'D':
@@ -121,7 +122,7 @@ def game_mode(self):
                         elif go_ahead == 'N':
                             replay(self)
                         else: 
-                            print('Please try again')
+                            print('Please try again, Y for yes and N for no')
                             go_ahead = input("For 10 coins you can get 5 new lives, do you want to spend your coins and continue ? y/n ").upper()
 
             replay(self)
@@ -143,7 +144,7 @@ def replay(self):
             print('Game Over')
             exit()
         else:
-            print("Invalid input")
+            print("Invalid input, Y for yes and N for no ")
             play = input("Do you want to do another game y/n ??: ").upper()
     
 
