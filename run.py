@@ -12,7 +12,7 @@ print('Welcome to the modern Hangman game :\n', '''   +---+
 
 class Game: 
     """
-       Get difficult input to determine the difficult 
+       Get difficult input to determine the difficult and the name
        choose from the user and start the game
     """
     def __init__(self, difficult, username):
@@ -26,8 +26,8 @@ class Game:
 
     def game_mode(self):
         """
-        Get input difficulty value to start a new match in hard or easy mode based
-        on the user preference
+        Get self.difficult value to start a new match in hard or easy mode 
+        based on the user preference
         """
         word = random.choice(WORDS)
         if self.difficult == 'E':
@@ -126,8 +126,8 @@ class Game:
 
     def replay(self):
         """
-        Get the play input value to give to the user the chance to choose if want
-        play another game or close the match
+        Get the play input value to give to the user the chance to choose if 
+        want play another game or close the match
         """
         play = input("Do you want to do another game y/n ??: ").upper()
         while play != 'Y' or play != 'N':
@@ -149,7 +149,7 @@ class Game:
 
 def main():
     """
-    run input pre-game and Game class
+    Run input pre-game and Game class
     """
 
 
